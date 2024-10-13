@@ -1,5 +1,6 @@
 import {FastifyInstance} from "fastify";
 import HomeController from "@/Http/Controllers/HomeController";
+import GithubController from "@/Http/Controllers/GithubController";
 
 export async function HomeRoute(fastify: FastifyInstance) {
     fastify.get('/ping', async (request, reply) => {
@@ -17,7 +18,11 @@ export async function HomeRoute(fastify: FastifyInstance) {
 
     fastify.get('/convertTime', async (request, reply) => {
         // let time = new Date().toLocaleTimeString('en-US', {hour12: true});
-        let time = '08:40:22AM';
+        let time = '12:40:22AM';
         return HomeController.convertTime(time);
+    });
+
+    fastify.get('/github/repos', async (request, reply) => {
+        return GithubController.getSelectedRepos(request, reply);
     });
 }

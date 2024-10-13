@@ -1,7 +1,4 @@
-import Fastify from 'fastify'
 import {app} from "@/app";
-
-
 
 app.listen({ port: 3030, host: '0.0.0.0' }, function (err, address) {
     if (err) {
